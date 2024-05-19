@@ -24,7 +24,7 @@ const cardContainerStyles = {
         width: '80%',
     },
     '@media (min-width: 960px)': {
-        width: '60%',
+        width: '80%',
     },
 };
 
@@ -57,7 +57,13 @@ export default function CCard(props) {
                     image={image}
                     title="green iguana"
                 />
-                <CardContent>
+                <CardContent sx={{
+                    '@media (max-width: 600px)': {
+                        flexDirection: 'column', // Change direction to column on screens smaller than 600px
+                        alignItems: 'center', // Center items vertically
+                    },
+                    // Add more custom styles for different screen sizes if needed
+                }}>
                     <Typography gutterBottom variant="h5" component="div">
                         {title}
                     </Typography>

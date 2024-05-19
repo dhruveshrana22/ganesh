@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, TextField } from '@mui/material'; // Import TextField from Material-UI
+import { Container, TextField, Grid } from '@mui/material'; // Import Grid from Material-UI
 import Navbar from '../../Componenet/Navbar';
 import CCard from '../../Componenet/Card';
 import { collection, getDocs } from 'firebase/firestore';
 import firestore from '../../../firbase';
+import './style.css'
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -61,16 +62,17 @@ const Home = () => {
                         fullWidth
                         sx={{ marginBottom: 2 }}
                     />
-                    <div style={{ display: "flex", }}>
+                    <div id='card'>
                         {filteredProducts.map((product) => (
-                            <CCard
-                                key={product.id}
-                                title={product.name}
-                                description={product.description}
-                                price={parseFloat(product.price)} // Assuming price is a string, convert it to a number if necessary
-                                dropdownOptions={product.dropdownOptions || []}
-                                image={product.image} // Assuming you have an image field in your product data
-                            />
+                            <div key={product.id}>
+                                <CCard
+                                    title={product.name}
+                                    description={product.description}
+                                    price={parseFloat(product.price)} // Assuming price is a string, convert it to a number if necessary
+                                    dropdownOptions={product.dropdownOptions || []}
+                                    image={product.image} // Assuming you have an image field in your product data
+                                />
+                            </div>
                         ))}
                     </div>
                 </Container>
